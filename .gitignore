@@ -1,0 +1,9 @@
+/nbproject/private/
+/config.js
+/node_modules/*~
+/node_modules
+/node_modules/*
+
+*.properties
+*~
+nohup.out
