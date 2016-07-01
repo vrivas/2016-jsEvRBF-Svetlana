@@ -1,7 +1,7 @@
 /** 
- *  @file    dcai2016.Persistence.js
+ *  @file    2016.SV.Persistence.js
  *  @author  Victor M. Rivas Santos <vrivas@ujaen.es>
- *  @date    21-dic-2015 , 12:47:16
+ *  @date    01/Jul/2016, 19:51
  *  @desc    Functions used to store information in database
  *  
  *  -------------------------------------

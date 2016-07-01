@@ -11,12 +11,12 @@
 var fs = require('fs');
 eval(fs.readFileSync('./config.js') + '');
 //eval(fs.readFileSync('./iconio.Date.js') + '');
-eval(fs.readFileSync('./dcai2016.Persistence.js') + '');
+eval(fs.readFileSync('./2016.SV.Persistence.js') + '');
 //eval(fs.readFileSync('iconio.Experiment.js') + '');
 
 
 /// Id for the experiment
-var experimentId = "DCAI2016FORECASTING"
+var experimentId = "SV2016FORECASTING"
 
 
 function distance(data1, data2) {
@@ -105,7 +105,7 @@ function main() {
     app.use(express.static(__dirname + ''));
     app.use(express.bodyParser());
 
-    console.log("Server for DCAI2016's experiment started...");
+    console.log("Server for Svetlana2016's experiment started...");
 
     try {
         // DDBB connection
