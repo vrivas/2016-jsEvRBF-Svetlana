@@ -1,11 +1,11 @@
 /**
  * @file sv16.js
- * @brief Data and main function for the experiments with the data used by Svetlana Goleshchuk in 2016
+ * @brief Data and main function for the experiments with the data used by Svitlana Goleshchuk in 2016
  *  Data has been taken from:
- *  http://www.global-view.com/forex-trading-tools/forex-history/index.html. 
- *  Each time series contains 1304 observations (from January 1, 2010 to December 31, 2014). 
- *  First 1043 obsevations are used for training. 
- *  Remaining 261 fot testing.
+ *  http://www.global-view.com/forex-trading-tools/forex-history/index.html.
+ *  Each time series contains 1304 observations (from January 1, 2010 to December 31, 2014).
+ *  First 1043 obsevations are used for training.
+ *  Remaining 261 for testing.
  * @date 01/Jul/2016, 19:49
  * @author Victor M. Rivas Santos <vrivas@ujaen.es>
  *         Geneura Team (http://geneura.wordpress.com)
@@ -30,7 +30,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-// Namespace for Svetlana2016 > sv16
+// Namespace for Svitlana2016 > sv16
 var sv16 = {};
 sv16.data = [];
 sv16.numExecutions = 0; // NUmber of executions in this client
@@ -61,7 +61,7 @@ sv16.createTrnVal = function () {
                 }
             }
         }
-    } while (sv16.valSamples.length <= 0); // Just in case    
+    } while (sv16.valSamples.length <= 0); // Just in case
     return this;
 }
 
@@ -184,7 +184,7 @@ sv16.sendNewSolution = function (_rbfnn, _tsme, _url) {
 
 /**
  * Establishes the values and action for button stopTimer
- * @returns {sv16} Returns the sv16 object to concatenate operations 
+ * @returns {sv16} Returns the sv16 object to concatenate operations
  */
 sv16.stopTimerActions = function () {
     $("#stopTimer").click(function () {
@@ -205,10 +205,10 @@ sv16.stopTimerActions = function () {
 sv16.main = function (maxExecutions) {
     maxExecutions = maxExecutions || 1;
     try {
-        console.log("Executing jsEvRBF for Svetlana'2016...");
+        console.log("Executing jsEvRBF for Svitlana'2016...");
 
         jsEOUtils.setVerbose(eval(jsEOUtils.getInputParam("verbose", false)));
-        jsEOUtils.setProblemId("Svetlana2016FORECASTING");
+        jsEOUtils.setProblemId(GLOBLAS.problemId);
         sv16.stopTimerActions();
         sv16.setClientInfo();
         sv16.createTrnVal();

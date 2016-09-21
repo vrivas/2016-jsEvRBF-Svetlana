@@ -31,5 +31,9 @@
   },
   "bundleDependencies": [],
   "private": true,
-  "main": "server.js"
+  "main": "server.js",
+    "scripts": {
+        "start": "node server.2016.SV.js"
+    }
+
 }

@@ -9,14 +9,10 @@
  */
 // Including libraries
 var fs = require('fs');
-eval(fs.readFileSync('./config.js') + '');
+eval(fs.readFileSync('./config.2016.SV.js') + '');
 //eval(fs.readFileSync('./iconio.Date.js') + '');
-eval(fs.readFileSync('./2016.SV.Persistence.js') + '');
+eval(fs.readFileSync(GLOBALS.persistenceFile) + '');
 //eval(fs.readFileSync('iconio.Experiment.js') + '');
-
-
-/// Id for the experiment
-var experimentId = "SV2016FORECASTING"
 
 
 function distance(data1, data2) {
@@ -44,6 +40,24 @@ function setClientId() {
 
 function errorMessage(message) {
     return "!!!! " + message;
+}
+
+/**
+ * Reads a file and converts its lines into an array.
+ * Valid ONLY for files with ONE float value per line
+ * @param {String} fileName The name of the file
+ * @returns {array of floats} The array containing the floats 
+ */
+function file2array(fileName) {
+    return fs.readFileSync(fileName)
+            .toString()
+            .split("\n")
+            .filter(function (e) {
+                return e.length > 0;
+            })
+            .map(function (e) {
+                return parseFloat(e);
+            });
 }
 /**
  * Object containing many callbacks dealing with server-client communications
@@ -76,20 +90,55 @@ var cb = {
     }
 
     , saveNewSolution: function (req, res) {
-        
-        //console.log("SaveNewSolution");
 
-                db.saveNewSolution(
-                        req.body["problem"]
-                        , req.body["clientID"]
-                        , req.body["rbfnn"]
-                        , req.body["tsme"]
-                        );
-        
+//console.log("SaveNewSolution");
+
+        db.saveNewSolution(
+                req.body["problem"]
+                , req.body["clientID"]
+                , req.body["rbfnn"]
+                , req.body["tsme"]
+                );
         allowCORS(res)
         res.writeHead(200, {"Content-type": "application/json"});
         res.write(JSON.stringify({"message": "ok"}));
         res.send();
+    }
+    /**
+     * Returns data according to the name of the problem
+     * @param {type} req
+     * @param {type} res
+     * @returns {undefined} If everything gos right, a JSON object containing training and test sets, with a 200 http code.
+     * If there exists any problem, a JSON containing a mesage with a 401 error http code.
+     */
+    , getData: function (req, res) {
+        var filePath = "./data/" + req.query["data_name"];
+        allowCORS(res)
+        var trn = [];
+        var tst = [];
+        var error = false;
+        try {
+            trn = file2array(filePath + ".trn");
+            tst = file2array(filePath + ".tst");
+        } catch (e) {
+            error = e;
+            console.log(errorMessage(e));
+        }
+        if (!error) {
+            res.writeHead(200, {"Content-type": "application/json"});
+            res.write(JSON.stringify({
+                "data_name": req.query["data_name"]
+                , "trn": trn
+                , "tst": tst
+            }));
+        } else {
+            res.writeHead(401, {"Content-type": "application/json"});
+            res.write(JSON.stringify({
+                "data_name": req.query["data_name"]
+                , "message": "File Not Found: " + error
+            }));
+            res.send();
+        }
     }
 };
 /**
@@ -98,22 +147,19 @@ var cb = {
  */
 function main() {
 
-    // Variables needed by node to act as a server
+// Variables needed by node to act as a server
     var express = require('express');
     var app = express();
     // Serving static files
     app.use(express.static(__dirname + ''));
     app.use(express.bodyParser());
-
-    console.log("Server for Svetlana2016's experiment started...");
-
+    console.log("Server for Svitlana2016's experiment started...");
     try {
         // DDBB connection
         //Comentado para mac
-        db.setModels(experimentId)
+        db.setModels(GLOBALS.experimentId)
         // Comentado para mac
         db.connect("localhost", "test");
-
     } catch (e) {
         console.log(
                 errorMessage("Error in main due to connection with database: "
@@ -125,10 +171,12 @@ function main() {
         app.post('/clientInformation', function (req, res) {
             cb.saveClientInformation(req, res, mongoose);
         });
-
         app.post('/newSolution', function (req, res) {
             cb.saveNewSolution(req, res);
         });
+        app.get('/getData', function (req, res) {
+            cb.getData(req, res);
+        })
     } catch (e) {
         console.log(errorMessage("Error in main due to any app.ACTION: " + e));
     }

@@ -8,7 +8,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>DCAI2016: Web browsers forecasting time-series</title>
+        <title>Svitlana'2016: Web browsers forecasting time-series</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="autumn.css" rel="alternate stylesheet" type="text/css" title="Autumn"/>
@@ -52,65 +52,62 @@ and open the template in the editor.
         <!-- Including ts-error-measures -->
         <script src="http://vrivas.es/ts-error-measures/ts-error-measures.js">// Error measures for Time-Series forecasting</script>
 
-        <script src="./dcai2016.main.js">// Loads data and main function for DCAI'2016 experiments</script>        
+        <script src="./config.2016.SV.js">//Loads configuration</script>        
+        <script src="./2016.SV.main.js">// Loads data and main function for DCAI'2016 experiments</script>        
     </head>
     <body>
         <article>
             <header>
-                <h1>jsEvRBF: Running <span id="sp_numExecutionsTitle"></span> of <span id="sp_maxExecutionsTitle"></span> executions, carrying out the experiments for DCAI'2016</h1>
+                <h1>jsEvRBF: Running <span id="sp_numExecutionsTitle"></span> of <span id="sp_maxExecutionsTitle"></span> executions, 
+                    using Svitlana's Data</h1>
                 <h3>V. M. Rivas <em>et al.</em><sup><a href="#footnote">1</a></sup></h3>
                 <p>
-                    <em><a href="http://geneura.ugr.es" target="_blank">GeNeura Team - TIC024-Free/Libre Software for Optimization</a><br/>
-                        Experiments for the paper to be sent to <a href="http://www.dcai-conference.net/" target="_blank">13th International Conference on Distributed Computing and Artificial Intelligence (DCAI'16)</a></em>                    
+                    <em><a href="http://geneura.ugr.es" target="_blank">GeNeura Team - TIC024-Free/Libre Software for Optimization</a></em>
                 </p>
             </header>
-<!--
-            <div class="columns">
-
-                <section id="abstract">
-                    <strong><em>Abstract</em></strong>.- This page includes an evolutionary algorithm that evolves Radial Basis Function Neural Networks (RBFNN). This kind of networks can be trained to perform many tasks, among them, the one concerning <em>time-series forecasting</em>. Once you have accessed this page, the algorithm has started to run; so, now, while you are reading this text, lot of nets are being built, evolved, trained and validated and the results are being sent to a server, to store them. The figures show how fitness (i.e., the inverse of the RMSE error when trying to forecast the validations set) is improved along the different generations (not executions), and also the chart corresponding to expected values versus yielded ones. Thanks for helping us to make science!
-                </section>
-                <section id="keywords">                   
-                    <strong><em>Keywords</em></strong>.- Radial Basis Function Neural Networks, Evolutionary Algorithms, Time-Series Forecasting, Web browser executions
-                </section>
-                <section id="console">
-                    <header><h2>1. Console</h2></header>
-                    <div id="jsEOConsole">
-                        <p>
-                            You are currently running the execution number <span id="sp_numExecutions"></span> of <span id="sp_maxExecutions"></span> (i.e., a <span id="sp_percExecutions"></span>). As far as we can detect, you are using a web browser identified as <span id="sp_browser"></span>.
-                        </p>
-                        <p>
-                            Regarding results, the best fitness found up to this moment in this executions is <span id="sp_currentFitness"></span>, that corresponds to a MAPE of <span id="sp_currentMAPE"></span>. Nevertheless, the best fitness found in this client along this set of executions is <span id="sp_bestFitness"></span>
-                        </p>
-                    </div>
-                    <button id="stopTimer">Click here to finish the experiments</button>
-                </section>
-                <section id="ft_vs_gn">
-                    <header><h2>2. Average fitness along generations</h2></header>
-                    <canvas id="myChart" width="0" height="0"></canvas>
-                    <div class="figure-caption"><strong>Figure 1. </strong> Average fitness over the different generations and evaluations.</div>
-                </section>
-                <section id="fo_vs_ex">
-                    <header><h2>3. Forecasted vs Expected</h2></header>
-                    <canvas id="forecasting"></canvas>
-                    <div class="figure-caption"><strong>Figure 2. </strong> Forecasted values (red line) provided by the latest best individual vs expected ones (blue line).</div>
-
-                </section>
-
-            </div> <!-- columns -- >
-            <footer id="footnote">
-                <p>
-                    <strong>Corresponding author:</strong> V. M. Rivas, 
-                    <a href="http://geneura.ugr.es" target="_blank">GeNeura Team</a><br/>
-                    <strong>E-mail:</strong> <em>vrivas@ujaen.es</em><br/>
-                    <strong>Web:</strong> <em><a href="http://vrivas.es" target="_blank">http://vrivas.es</a></em><br/>                   
-                    <strong>Phone:</strong> + 34 953 21 23 44<br/>
-                    <em><a href="http://wwwdi.ujaen.es" target="_blank">Department of Computer Sciences</a> - <a href="http://www.ujaen.es" target="_blank">University of Jaen</a></em>
-            </footer>
-            <script>//d6.main(1);</script>
--->
-<h1>The experiments we were carrying out have finished!! Thanks</h1>
-<h1>Los experimentos que estábamos realizando han acabado, ¡Gracias!</h1>
+                        <div class="columns">
+            
+                            <section id="abstract">
+                                <strong><em>Abstract</em></strong>.- This page includes an evolutionary algorithm that evolves Radial Basis Function Neural Networks (RBFNN). This kind of networks can be trained to perform many tasks, among them, the one concerning <em>time-series forecasting</em>. Once you have accessed this page, the algorithm has started to run; so, now, while you are reading this text, lot of nets are being built, evolved, trained and validated and the results are being sent to a server, to store them. The figures show how fitness (i.e., the inverse of the RMSE error when trying to forecast the validations set) is improved along the different generations (not executions), and also the chart corresponding to expected values versus yielded ones. Thanks for helping us to make science!
+                            </section>
+                            <section id="keywords">                   
+                                <strong><em>Keywords</em></strong>.- Radial Basis Function Neural Networks, Evolutionary Algorithms, Time-Series Forecasting, Web browser executions
+                            </section>
+                            <section id="console">
+                                <header><h2>1. Console</h2></header>
+                                <div id="jsEOConsole">
+                                    <p>
+                                        You are currently running the execution number <span id="sp_numExecutions"></span> of <span id="sp_maxExecutions"></span> (i.e., a <span id="sp_percExecutions"></span>). As far as we can detect, you are using a web browser identified as <span id="sp_browser"></span>.
+                                    </p>
+                                    <p>
+                                        Regarding results, the best fitness found up to this moment in this executions is <span id="sp_currentFitness"></span>, that corresponds to a MAPE of <span id="sp_currentMAPE"></span>. Nevertheless, the best fitness found in this client along this set of executions is <span id="sp_bestFitness"></span>
+                                    </p>
+                                </div>
+                                <button id="stopTimer">Click here to finish the experiments</button>
+                            </section>
+                            <section id="ft_vs_gn">
+                                <header><h2>2. Average fitness along generations</h2></header>
+                                <canvas id="myChart" width="0" height="0"></canvas>
+                                <div class="figure-caption"><strong>Figure 1. </strong> Average fitness over the different generations and evaluations.</div>
+                            </section>
+                            <section id="fo_vs_ex">
+                                <header><h2>3. Forecasted vs Expected</h2></header>
+                                <canvas id="forecasting"></canvas>
+                                <div class="figure-caption"><strong>Figure 2. </strong> Forecasted values (red line) provided by the latest best individual vs expected ones (blue line).</div>
+            
+                            </section>
+            
+                        </div> <!-- columns -->
+                        <footer id="footnote">
+                            <p>
+                                <strong>Corresponding author:</strong> V. M. Rivas, 
+                                <a href="http://geneura.ugr.es" target="_blank">GeNeura Team</a><br/>
+                                <strong>E-mail:</strong> <em>vrivas@ujaen.es</em><br/>
+                                <strong>Web:</strong> <em><a href="http://vrivas.es" target="_blank">http://vrivas.es</a></em><br/>                   
+                                <strong>Phone:</strong> + 34 953 21 23 44<br/>
+                                <em><a href="http://wwwdi.ujaen.es" target="_blank">Department of Computer Sciences</a> - <a href="http://www.ujaen.es" target="_blank">University of Jaen</a></em>
+                        </footer>
+                        <script>d6.main(1);</script>
         </article>
     </body>
 </html>

@@ -1,9 +1,9 @@
-/** 
+/**
  *  @file    2016.SV.Persistence.js
  *  @author  Victor M. Rivas Santos <vrivas@ujaen.es>
  *  @date    01/Jul/2016, 19:51
  *  @desc    Functions used to store information in database
- *  
+ *
  *  -------------------------------------
  *  GeNeura Team (http://geneura.ugr.es)
  */
@@ -15,18 +15,19 @@ var Schema = mongoose.Schema
 
 /// Fields containing navigators' information
 var navigatorSchema = new Schema({
-    id: ObjectId
+    Id: ObjectId
     , date: {type: Date, default: Date.now}
-    , clientID: String
+    , clientId: String
     , userAgent: String
+    , problemId: String
 });
 
 
 var solutionSchema = new Schema({
-    id: ObjectId
+    Id: ObjectId
     , date: {type: Date, default: Date.now}
     , problem: String
-    , clientID: String
+    , clientId: String
     , rbfnn: String
     , tsme: {
         MSE: Number
@@ -70,11 +71,14 @@ var db = {
      * @param {type} userAgent
      * @returns {undefined}
      */
-    saveNavigatorInfo: function (clientId, userAgent) {
+    saveNavigatorInfo: function (clientId
+      , userAgent
+    , problemId) {
         this.navigatorModel.create(
                 {
-                    'clientID': clientId
+                    'clientId': clientId
                     , 'userAgent': userAgent
+                    , 'problemId': problemId
                 }
         , function (err, small) {
             if (err)
@@ -84,15 +88,15 @@ var db = {
     }
     ,
     /**
-     * Stores a new Solution in DDBB 
+     * Stores a new Solution in DDBB
      * @param {NewSolution} aNewSolution
-     * @returns {void}
+     * @returns {voId}
      */
-    saveNewSolution: function (problem, clientID, rbfnn, tsme) {
+    saveNewSolution: function (problemId, clientId, rbfnn, tsme) {
         /*
          console.log("Trying to store a new Solution's  in DDBB: "
-         + " Problem: " + problem           
-         + " Client ID: " + clientID
+         + " Problem: " + problem
+         + " Client Id: " + clientId
          + " RBFNN: " + rbfnn
          + " Errors: " + tsme);
          */
@@ -101,8 +105,8 @@ var db = {
           tsme[i]=(isNaN(tsme[i]))?1e6:tsme[i];
         }
         this.solutionModel.create({
-            'problem': problem
-            , 'clientID': clientID
+            'problemId': problemId
+            , 'clientId': clientId
             , 'rbfnn': rbfnn
             , 'tsme': tsme
         }
@@ -111,8 +115,8 @@ var db = {
                 return handleError(err);
             else
                 return ("New Solution's info stored in DDBB: "
-                        + " Problem: " + problem
-                        + " Client ID: " + clientID
+                        + " Problem Id: " + problemId
+                        + " Client Id: " + clientId
                         + " RBFNN: " + rbfnn
                         + " Errors: " + tsme);
         });
